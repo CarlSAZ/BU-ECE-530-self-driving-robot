@@ -1,7 +1,25 @@
 Self Driving Car Interface 
 
+## Object Collision API
+### General User:
+collision_detection_set_module()
+* User will pass an object of the collision detection module
+
+collision_add_sensor()
+* User can pass a sensor object that is dependent on the sub detection module?
+
+### Collision Detection / Avoidance Developers:
+get_distances()
+* returns distances measured from each sensor available?
+* returns in a car centric reference frame?
+
+get_state_vector()
+* returns current state vector of the car
+
+
+
 ## Navigation API documentation
-High level interface user:
+### High level interface user:
 journey_get_status()
 - Returns an object with the current status
 
@@ -21,4 +39,9 @@ journey_limit_speed()
 - Sets a maximum speed limit for the journey
 
 
-Navigation Module Developers:
+### Navigation Module Developers:
+get_state_vector()
+* returns current state vector of the car
+
+get_lat_lon()
+* Returns coordinates of current position
