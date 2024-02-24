@@ -23,6 +23,7 @@ MIT: 42.3660286, -71.092396
 ## Direction to Journey Mapping
 
 | Field | Type | Example Value | Description |
+| ----- | ---- | ------------- | ----------- |
 | Journey_ID | int | 32 | Journey ID |
 | step_type | string | "Direction" | Either "Journey" or "Direction", allows for mini-journeys to be added |
 | step_ID | int | 87654321 | Direction ID |
