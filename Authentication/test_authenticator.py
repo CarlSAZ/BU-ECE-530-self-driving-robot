@@ -2,9 +2,7 @@
 import logging
 import tracemalloc
 import pytest
-import subprocess
 import authenticator as auth
-import requests
 
 BASE = "http://127.0.0.1:5000/"
 
@@ -35,8 +33,10 @@ def test_invalid_user(client):
 def test_add_user(client):
     '''Test adding a user'''
     log.info("Adding user 34")
-    response = client.put("/userlist/34",data={"email" : "janesmith@bu.edu", "name" : "Smith, Jane"})
+    response = client.put("/userlist/34",json={"email" : "janesmith@bu.edu", "name" : "Smith, Jane"})
     assert response.status_code == 201
+    response = client.get("/userlist/34")
+    assert response.status_code == 200
 
 
 if __name__ == "__main__":

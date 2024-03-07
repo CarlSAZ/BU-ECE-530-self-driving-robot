@@ -18,6 +18,10 @@ user_fields = {
     'name' : fields.String
 }
 
+parser = reqparse.RequestParser()
+parser.add_argument('name')
+parser.add_argument('email')
+
 def abort_if_userid_not_found(user_id):
     if user_id not in userList:
         abort(404, message="Could not find user id")
@@ -38,7 +42,7 @@ class UserDatabase(Resource):
     
     def put(self,userid):
         abort_if_user_exists(userid)
-        data = request.get_json()
+        data = parser.parse_args()
         userList[userid] = data
         return userList[userid], 201
 
