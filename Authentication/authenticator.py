@@ -6,7 +6,8 @@ def create_app(config_filename):
     app = Flask(__name__)
     #app.config.from_pyfile(config_filename)
     api = Api(app)
-    api.add_resource(UserDatabase,"/userlist")
+    api.add_resource(UserDatabase,"/userlist/<userid>")
+    api.init_app(app)
     return app
 
 
@@ -49,4 +50,6 @@ class UserDatabase(Resource):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app = create_app("")
+    #app.run(debug=True)
+    app.run()

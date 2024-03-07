@@ -15,7 +15,7 @@ log = logging.getLogger('Test.authenticator')
 @pytest.fixture()
 def app():
     app = auth.create_app('')
-    app.config.update({"testing": True})
+    app.config['TESTING'] = True
 
     yield app
 
@@ -27,16 +27,18 @@ def client(app):
 def runner(app):
     return app.test_cli_runner()
 
-class test_class():
-    '''Class container for the unit testing of matrix_mult.py'''
-    def test_add_user(self,client):
-        '''Test adding a user'''
-        log.info("Adding user 34")
-        response = client.put(BASE + "userlist/34",{"email" : "janesmith@bu.edu", "name" : "Smith, Jane"})
-        assert response == 201
+def test_invalid_user(client):
+    log.info("Testing an invalid get")
+    response = client.get("/userlist/-97")
+    assert response.status_code == 404
+
+def test_add_user(client):
+    '''Test adding a user'''
+    log.info("Adding user 34")
+    response = client.put("/userlist/34",data={"email" : "janesmith@bu.edu", "name" : "Smith, Jane"})
+    assert response.status_code == 201
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
-    mytest = test_class()
-    mytest.test_add_user(client)
+    pytest.main()
