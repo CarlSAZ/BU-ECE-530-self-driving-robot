@@ -1,18 +1,35 @@
 from flask import Flask
 from flask_restful import Resource, Api, abort, reqparse
 from marshmallow import Schema, fields
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import Mapped, mapped_column
 
-app = Flask(__name__)
-app = Api(app)
+db = SQLAlchemy()
 
+def create_app(config_filename):
+    '''Standard Flask API factory pattern'''
+    app = Flask(__name__)
+    #Optional ability to feed configuration via config file...
+    #app.config.from_pyfile(config_filename)
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///navigation.db"
+    api = Api(app)
+    api.add_resource(Journey,"/navigation/journey/<input0>")
+    api.add_resource(DirectionList,"/navigation/direction/")
+    api.add_resource(Direction,"/navigation/direction/<input0>")
+    api.init_app(app)
+    
+    with app.app_context():
+        db.create_all()
+    return app
 
+class DirectionModel(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True)
+    username: Mapped[str] = mapped_column(unique=True)
 
-class Navigation(Resource):
-    def __init__(self) -> None:
-        super().__init__()
-        self.speed_limit = 0
-    def get(self):
-        return self
+class JourneyModel(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True)
+    username: Mapped[str] = mapped_column(unique=True)
+
 
 def abort_if_step_not_found(step_id):
     if step_id not in direction_steps:
@@ -46,14 +63,8 @@ class Direction(Resource):
         return direction_steps[step_id]
     
     def post(self,step_id):
-        
-
-    
-        
+        pass
 
 class DirectionList(Resource):
     def get(self):
         return direction_steps
-    
-    def post(self):
-        ''''''
