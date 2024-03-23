@@ -5,6 +5,36 @@ an atomic step is kept, but the fields are changed to focus on information neede
 automonomous car.
 MIT: 42.3660286, -71.092396
 
+
+
+## Navigation API documentation
+### High level interface user:
+journey_get_status()
+- Returns an object with the current status
+
+journey_halt()
+- stops the current journey and stops the car
+
+journey_set_start()
+- Sets the starting location of the journey
+
+journey_set_destination()
+- Sets the end point of the journey
+
+journey_begin()
+- Starts the car on the journey
+
+journey_limit_speed()
+- Sets a maximum speed limit for the journey
+
+
+### Navigation Module Developers:
+get_state_vector()
+* returns current state vector of the car
+
+get_lat_lon()
+* Returns coordinates of current position
+
 ## Journey
 
 | Field | Type | Example Value | Description |

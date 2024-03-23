@@ -4,6 +4,22 @@ The object detection module collects reports of obstacles and hazards. The modul
 
 Note: This probably doesn't work well as a REST style API, but this module will experiment with whether any database model will work.
 
+## Object Collision API
+### General User:
+collision_detection_set_module()
+* User will pass an object of the collision detection module
+
+collision_add_sensor()
+* User can pass a sensor object that is dependent on the sub detection module?
+
+### Collision Detection / Avoidance Developers:
+get_distances()
+* returns distances measured from each sensor available?
+* returns in a car centric reference frame?
+
+get_state_vector()
+* returns current state vector of the car
+
 ## Obstacle Database
 
 The obstacle database will be a document style database. The attached detection systems or sensors can provide additional data through this, as long
