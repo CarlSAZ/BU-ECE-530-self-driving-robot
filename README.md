@@ -1,47 +1,27 @@
-Self Driving Car Interface 
+# Generalize Restful Autonomous Vehicle Environment (G.R.A.V.E)
 
-## Object Collision API
-### General User:
-collision_detection_set_module()
-* User will pass an object of the collision detection module
-
-collision_add_sensor()
-* User can pass a sensor object that is dependent on the sub detection module?
-
-### Collision Detection / Avoidance Developers:
-get_distances()
-* returns distances measured from each sensor available?
-* returns in a car centric reference frame?
-
-get_state_vector()
-* returns current state vector of the car
+Here lies the G.R.A.V.E repository for my software design course. The primary purpose of this codebase is to explore concepts in Restful API design, databases, unit testing, and CI/CD practices.
 
 
+## Documentation
 
-## Navigation API documentation
-### High level interface user:
-journey_get_status()
-- Returns an object with the current status
+Most submodules have their documentation contained in markdown files - Info.md -  in their folders. These describe the database components and the API for that submodule.
 
-journey_halt()
-- stops the current journey and stops the car
+## Submodules
 
-journey_set_start()
-- Sets the starting location of the journey
+### Authentication
+Implements a basic authenticator to restrict access to the autonomous vehicle.
 
-journey_set_destination()
-- Sets the end point of the journey
+### Navigation
+This submodule keeps track of navigation steps in a lookup database. Direction steps will be either entered via manual entry, or by piping input from a mapping service such as google maps.
 
-journey_begin()
-- Starts the car on the journey
+### Obstacle Detections
+Stores reports of obstacles or collision alerts in a database. These can then be fetched by an obstacle avoidance module (TBD).
 
-journey_limit_speed()
-- Sets a maximum speed limit for the journey
+### Sensors
+Basic templates for potential camera or Lidar units.
+
+### Steering
+Self contained resful api to control the main steering component. 
 
 
-### Navigation Module Developers:
-get_state_vector()
-* returns current state vector of the car
-
-get_lat_lon()
-* Returns coordinates of current position
