@@ -10,18 +10,18 @@ Most submodules have their documentation contained in markdown files - Info.md -
 ## Submodules
 
 ### Authentication
-Implements a basic authenticator to restrict access to the autonomous vehicle.
+Implements a basic authenticator to restrict access to the autonomous vehicle. [Read Further](/Authentication/INFO.md)
 
 ### Navigation
-This submodule keeps track of navigation steps in a lookup database. Direction steps will be either entered via manual entry, or by piping input from a mapping service such as google maps.
+This submodule keeps track of navigation steps in a lookup database. Direction steps will be either entered via manual entry, or by piping input from a mapping service such as google maps.[Read Further](/navigation/INFO.md)
 
 ### Obstacle Detections
-Stores reports of obstacles or collision alerts in a database. These can then be fetched by an obstacle avoidance module (TBD).
+Stores reports of obstacles or collision alerts in a database. These can then be fetched by an obstacle avoidance module (TBD). [Read Further](/ObjectDetection/INFO.md)
 
 ### Sensors
-Basic templates for potential camera or Lidar units.
+Basic templates for potential camera or Lidar units. [Read Further](/Sensors/INFO.md)
 
 ### Steering
-Self contained resful api to control the main steering component. 
+Self contained resful api to control the main steering component. [Read Further](/steering/INFO.md)
 
 
