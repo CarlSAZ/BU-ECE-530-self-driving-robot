@@ -3,12 +3,12 @@ from flask_restful import Resource, Api, abort, reqparse
 from marshmallow import Schema, fields
 
 def create_app(config_filename):
-    app = Flask(__name__)
+    newapp = Flask(__name__)
     #app.config.from_pyfile(config_filename)
-    api = Api(app)
+    api = Api(newapp)
     api.add_resource(UserDatabase,"/userlist/<userid>")
-    api.init_app(app)
-    return app
+    api.init_app(newapp)
+    return newapp
 
 
 userList = {}
@@ -52,8 +52,9 @@ class UserDatabase(Resource):
         return '', 204
 
 
+app = create_app("")
 
 if __name__ == "__main__":
-    app = create_app("")
     #app.run(debug=True)
-    app.run()
+    #app.run()
+    print("Hello")
